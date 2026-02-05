@@ -1,4 +1,3 @@
-
 import dotenv from "dotenv"
 dotenv.config();
 import { intro, confirm, isCancel } from "@clack/prompts";
@@ -35,9 +34,14 @@ const optionsSchema = z.object({
   clientId: z.string().optional(),
 });
 
-/* =============================================
-   ACTION
-============================================= */
+/**
+ * Initiates an OAuth2 device authorization login flow and prompts the user to complete it in their browser.
+ *
+ * Starts device authorization against the configured server and client, displays the verification URL and user code, optionally opens the default browser, and waits for the user to authorize the device. If required configuration is missing or the authorization request fails, the process exits with code 1.
+ * @param {object} opts - Options to override defaults.
+ * @param {string} [opts.serverUrl] - Base URL of the authorization server; defaults to DEFAULT_SERVER_URL.
+ * @param {string} [opts.clientId] - OAuth client ID; defaults to the BETTER_AUTH_CLIENT_ID environment variable.
+ */
 
 export async function loginAction(opts) {
   const options = optionsSchema.parse(opts);

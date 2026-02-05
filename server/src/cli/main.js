@@ -8,6 +8,11 @@ import { login } from "./commands/auth/login.js";
 
 dotenv.config();
 
+/**
+ * Initialize and run the Orbital CLI: render ASCII banner, print description, register commands, and parse CLI arguments.
+ *
+ * Registers the `login` subcommand, sets program metadata (name, version, description), shows help when no subcommand is provided, and parses process.argv.
+ */
 async function main() {
     // Display banner
     console.log(
